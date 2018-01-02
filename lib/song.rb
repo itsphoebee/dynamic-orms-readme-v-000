@@ -25,7 +25,7 @@ class Song
     attr_accessor col_name.to_sym
   end
 
-  def initialize(options={})                        #takes in argument set as empty hash 
+  def initialize(options={})                        #takes in argument set as empty hash
     options.each do |property, value|               #use send method to grab name of hash key as a method to set to the value
       self.send("#{property}=", value)
     end
@@ -41,7 +41,7 @@ class Song
     self.class.table_name
   end
 
-  def values_for_insert                       #iterate over col names and use send to 
+  def values_for_insert                       #iterate over col names and use send to
     values = []                               #invoke method by that name ans capture value
     self.class.column_names.each do |col_name|
       values << "'#{send(col_name)}'" unless send(col_name).nil?
@@ -59,6 +59,3 @@ class Song
   end
 
 end
-
-
-
